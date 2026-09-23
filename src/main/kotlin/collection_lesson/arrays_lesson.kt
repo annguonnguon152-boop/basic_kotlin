@@ -198,6 +198,16 @@ fun main() {
     val employeesName = newTeacherName.copyOf();
     println(employeesName.contentToString())
 
+    // copy of Range // ចំណាំ៖ end index មិនត្រូវបានរាប់បញ្ចូល។
+    val result5 = employeesName.copyOfRange(1, 4)
+    println(result5.contentToString())
+
+    val num7 = Array(5) { 2}
+
+    numbers.fill(100)
+    println(numbers.contentToString())
+
+
 
 
 
