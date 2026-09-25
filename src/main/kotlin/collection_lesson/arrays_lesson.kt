@@ -11,11 +11,11 @@ fun main() {
 
     // Mixed Type Array
     val data = arrayOf<Any>("dara", 20, true, 85) // don't recommend to use this array
-    """
+    /*
      Primitive Arrays:     
         IntArray, DoubleArray, FloatArray, LongArray, 
         ShortArray, ByteArray, BooleanArray, CharArray
-    """
+    */
     // Example: IntArray
     val integerArray = intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
@@ -207,78 +207,41 @@ fun main() {
     numbers.fill(100)
     println(numbers.contentToString())
 
+    // Array Equality មិនគួរប្រៀបធៀប arrays ដោយ == បើចង់ប្រៀបធៀប contents។
+    // We use:
+    val a = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    val b = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    println(a.contentEquals(b))
 
+    // distinct យកតម្លៃដែលមិនស្ទួន
+    val c = arrayOf(1, 1, 2, 3, 2, 5, 5, 4, 6, 7)
+    val resultC = c.distinct().sorted()
+    println(resultC)
 
+    // Nested Array : Array អាចមាន Array ខាងក្នុង
+    // Array 2D
+    val data2 = arrayOf(
+        arrayOf(1, 2, 3),
+        arrayOf(4, 5, 6)
+    )
+    /* contentDeepToString(): គឺជា Function ក្នុង Kotlin ដែលប្រើសម្រាប់បង្ហាញធាតុទាំងអស់នៅក្នុង
+    Nested Array ឬ Array ដែលមាន Array នៅខាងក្នុង។
+     */
+    println(data2.contentDeepToString())
 
+    /*
+        mapNotNull() មានប្រយោជន៍នៅពេល Array មាន Nullable Data។
+     */
+    val numbers8 = arrayOf(10, null, 20, null, 30)
+    val result8 = numbers8.mapNotNull { it }
+    println(result8)
+    /*
+    fold()
+     */
+    val numbers9 = arrayOf(10, 20, 30, 40)
+    val sum = numbers9.fold(0) { total, number ->
+        total + number
+    }
+    println(sum)
 
 }
-
-//    println(numbers2)
-//    println(numbers3)
-//    println("All > 0? ${numbers.all { it > 0 }}")
-//    println("All < 0? ${numbers.any { it < 0 }}")
-//    println("None > 10? ${numbers.none { it > 10 }}")
-//
-//    println("First 5: ${numbers.take(5).joinToString()}")
-//    println("Last 3: ${numbers.takeLast(5).joinToString()}")
-//    println("Drop first 5: ${numbers.drop(5).joinToString()}")
-//
-//    val withDuplicates = arrayOf(1, 2, 2, 3, 3, 3, 4)
-//    println("Distinct: ${withDuplicates.distinct()}")
-
-//    val numbers2 = arrayOfNulls<Int>(6)
-//    val number3 = Array(5) { i -> i * i }
-//    val number4 = intArrayOf(10, 20, 30)
-//
-//    println(numbers.sum())
-//    println(numbers.average())
-//    println(numbers.min())
-//    println(numbers.max())
-//    println(numbers.count())
-//
-//    // search operation
-
-//    println("Index of 20: ${numbers.indexOf(20)}")
-//    println("Contain 20: ${numbers.contains(20)}")
-//    println("Element at index 2: ${numbers.elementAt(2)}")
-//
-//    // transformation (oldArray -> newArray)
-//    val newNumbers = numbers.map { it * 2 }
-//    println(newNumbers)
-//
-//    val evenNumbers = numbers.filter { it % 2 == 0 && it > 50 }
-//    println(evenNumbers)
-//
-//    // sort
-//    val sortedNumbers = numbers.sorted()
-//    val sortedDescending = numbers.sortedDescending()
-//    println(sortedNumbers)
-//    println(sortedDescending)
-//
-//    // group
-//    val grouped = numbers.groupBy { if (it > 20) "Greater than 20" else "Less than 20" }
-//    println(grouped)
-
-// update
-//    numbers[3] = 10
-//    numbers.set(3, 60)
-
-// input
-//    for(i in numbers2.indices){
-//        print("Enter number: ")
-//        numbers2[i] = readln().toInt();
-//    }
-//    // output
-//    for(i in numbers2.indices){
-//        print("Number3[$i]: ${numbers2[i]}")
-//    }
-//    println(numbers.contentToString())
-//    println(numbers.size)
-//    println(numbers.indices)
-//    println(numbers.lastIndex)
-//    println(numbers.last())
-//    println("Index1: ${numbers[1]}")
-//    println("Index2: ${numbers.get(3)}")
-//    println("Is Number=50? ${50 in numbers}")
-//    println("Is Number=60? ${60 in numbers}")
-//    println(numbers2.contentToString())
